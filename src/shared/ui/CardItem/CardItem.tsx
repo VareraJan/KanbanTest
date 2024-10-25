@@ -1,8 +1,8 @@
 import { Card } from '@consta/uikit/Card'
 import { Text } from '@consta/uikit/Text'
 import { FC } from 'react'
-import styles from './CardItem.module.css'
 import { IBoardProps } from '../Board/Board'
+import styles from './CardItem.module.css'
 
 export interface ICard {
 	id: number

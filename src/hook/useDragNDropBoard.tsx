@@ -67,40 +67,6 @@ export const useDragNDropBoard = ({ boards, setBoards }: Props) => {
 		[boards, currentBoard, currentItem, setBoards]
 	)
 
-	// function dropHandler(
-	// 	e: DragEvent<HTMLDivElement>,
-	// 	board: IBoard,
-	// 	item?: ICard
-	// ): void {
-	// 	e.preventDefault()
-	// 	e.stopPropagation()
-
-	// 	if (currentItem && currentBoard) {
-	// 		const currentIndex = currentBoard?.items.indexOf(currentItem)
-	// 		currentBoard.items.splice(currentIndex, 1)
-
-	// 		if (!item) {
-	// 			board.items.push(currentItem)
-	// 		} else {
-	// 			const dropIndex = board.items.indexOf(item)
-	// 			board.items.splice(dropIndex + 1, 0, currentItem)
-	// 		}
-
-	// 		setBoards(
-	// 			boards!.map((b) => {
-	// 				if (b.id === board.id) {
-	// 					return board
-	// 				}
-	// 				if (b.id === currentBoard.id) {
-	// 					return currentBoard
-	// 				}
-
-	// 				return b
-	// 			})
-	// 		)
-	// 	}
-	// }
-
 	return useMemo(
 		() => ({
 			dragStartHandler,

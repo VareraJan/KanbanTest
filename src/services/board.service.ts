@@ -3,7 +3,7 @@
 import { IBoard } from '../shared/ui'
 import { getBoards } from './backendMock'
 
-// бэкенда не существует, запросы прописаны и закоментированны, вместо них возвращается заранее прописанный ответ
+// бэкенда не существует, запросы прописаны и закоментированны, вместо них возвращается имитация работы бекенда
 export const BoardService = {
 	async getAll(): Promise<IBoard[]> {
 		// return (await axiosInstance.get<IBoard[]>('/board')).data

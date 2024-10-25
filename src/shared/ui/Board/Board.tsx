@@ -1,8 +1,8 @@
 import { GridItem } from '@consta/uikit/Grid'
 import { Text } from '@consta/uikit/Text'
 import { DragEvent, FC } from 'react'
-import styles from './Board.module.css'
 import { CardItem, ICard } from '../CardItem/CardItem'
+import styles from './Board.module.css'
 
 export interface IBoard {
 	id: number

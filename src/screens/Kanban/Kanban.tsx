@@ -1,6 +1,6 @@
-import { DragEvent, FC, useState } from 'react'
+import { FC } from 'react'
 import { Grid } from '@consta/uikit/Grid'
-import { Board, IBoard, ICard } from '../../shared/ui'
+import { Board } from '../../shared/ui'
 import { useBoard, useDragNDropBoard } from '../../hook/'
 
 export const Kanban: FC = () => {
