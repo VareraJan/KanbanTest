@@ -38,8 +38,8 @@ export const getBoards = new Promise((res) => {
 					id: 4,
 					title: 'Выполнено',
 					items: [
-						{ id: 10, title: 'Task 8', text: 'loren ipsum' },
-						{ id: 11, title: 'Task 9', text: 'loren ipsum' },
+						{ id: 10, title: 'Task 10', text: 'loren ipsum' },
+						{ id: 11, title: 'Task 11', text: 'loren ipsum' },
 					],
 				},
 			]),

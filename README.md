@@ -1,67 +1,42 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Redux/Toolkit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Релиз без подключенного Redux.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Склонировать репозиторий в рабочую папку
 
-## Expanding the ESLint configuration
+Установить зависимости:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm i
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Переименуйте файл .env.example в .env и заполните его
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Запустить приложение:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-# Канбан-доска
 
-Условие: 
+В терминале будет указан URL запуска приложения.
+Например [http://localhost:5173/](http://localhost:5173/)
+
+# Тестовое задание: Канбан-доска
+
+Условие:
 Реализовать Канбан-доску.
 
 Инструменты:
-    • React + Redux, JS или TS – на выбор;
-    • Для визуального оформления можно использовать любую библиотеку типа bootstrap, materialize и тд, но лучше если сразу CONSTA (https://consta.design);
-    • В качестве источника данных можно использовать любой сервис типа https://jsonplaceholder.typicode.com.
+• React + Redux, JS или TS – на выбор;
+• Для визуального оформления можно использовать любую библиотеку типа bootstrap, materialize и тд, но лучше если сразу CONSTA (https://consta.design);
+• В качестве источника данных можно использовать любой сервис типа https://jsonplaceholder.typicode.com.
 
-Критерии выполнения:
-    1. На доске должны быть 4 колонки с заголовками «Очередь», «В работе», «На проверке», «Выполнено»;
-    2. Реализовать получение уже имеющихся карточек и вывод на доску;
-    3. Реализовать добавление новых карточек в первую колонку. В карточке должны быть поля «ID», «Заголовок», «Описание»;
-    4. Реализовать перетягивание курсором мыши карточки из одной колонки в другую. Причём карточка может двигаться только слева направо, и только в ближайшую колонку;
-    5. Добавить кнопку удаления карточки;
-    6. Обязательно реализовать запросы к API на получение, обновление, удаление карточек. Даже если данные не откуда получить, запрос должен быть написан.
+Критерии выполнения: 1. На доске должны быть 4 колонки с заголовками «Очередь», «В работе», «На проверке», «Выполнено»; 2. Реализовать получение уже имеющихся карточек и вывод на доску; 3. Реализовать добавление новых карточек в первую колонку. В карточке должны быть поля «ID», «Заголовок», «Описание»; 4. Реализовать перетягивание курсором мыши карточки из одной колонки в другую. Причём карточка может двигаться только слева направо, и только в ближайшую колонку; 5. Добавить кнопку удаления карточки; 6. Обязательно реализовать запросы к API на получение, обновление, удаление карточек. Даже если данные не откуда получить, запрос должен быть написан.
