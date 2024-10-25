@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { IBoard } from '../shared/ui'
 import { BoardService } from '../services/board.service'
+import { useAppSelector } from './useAppSelector'
+import { setBoards } from '../store/kanban/kanban.slice'
+import { useActions } from './useActions'
 
 interface IUseBoardResponse {
 	boards: IBoard[] | undefined
@@ -10,20 +13,11 @@ interface IUseBoardResponse {
 }
 
 export const useBoard = (): IUseBoardResponse => {
-	const [boards, setBoards] = useState<IBoard[]>()
-	const [isLoading, setIsLoading] = useState<boolean>(false)
-	const [isError, setIsError] = useState<boolean>(false)
+	const { isError, isLoading, boards } = useAppSelector((state) => state.kanban)
+	const { getAll } = useActions()
 
 	useEffect(() => {
-		setIsLoading(true)
-		setIsError(false)
-		BoardService.getAll()
-			.then((data) => setBoards(data))
-			.catch((e) => {
-				console.log(`[BOARD_GET_ALL] error ${e}`)
-				setIsError(true)
-			})
-			.finally(() => setIsLoading(false))
+		getAll()
 	}, [])
 
 	return useMemo(
