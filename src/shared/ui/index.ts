@@ -1,1 +1,5 @@
-export {Layout} from "./Layout/Layout";
+export { Layout } from './Layout/Layout'
+export { Board } from './Board/Board'
+export { CardItem } from './CardItem/CardItem'
+export type { IBoard } from './Board/Board'
+export type { ICard } from './CardItem/CardItem'
