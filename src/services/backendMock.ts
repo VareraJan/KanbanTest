@@ -43,9 +43,10 @@ const boards = [
 	},
 ]
 
-export const getBoards: Promise<IBoard[]> = new Promise((res) => {
-	setTimeout(() => res(boards), 1500)
-})
+export const getBoards = (): Promise<IBoard[]> =>
+	new Promise((res) => {
+		setTimeout(() => res(boards), 1500)
+	})
 
 export const setBoardsBack = (data: IBoard[]): Promise<IBoard[]> =>
 	new Promise((res) => {

@@ -2,3 +2,32 @@
 	cursor: grab;
 	margin-top: 0.5rem;
 }
+
+.text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	cursor: auto;
+}
+
+.footer {
+	display: flex;
+	justify-content: end;
+}
+
+.modal {
+	min-width: 400px;
+	position: relative;
+	padding: 0 2rem;
+}
+.modalBtn {
+	position: absolute;
+	bottom: 1rem;
+	left: 5%;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+
+}

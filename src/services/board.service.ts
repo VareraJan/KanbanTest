@@ -9,7 +9,7 @@ export type ICreateCard = Omit<ICard, 'id'>
 export const BoardService = {
 	async getAll(): Promise<IBoard[]> {
 		// return (await axiosInstance.get<IBoard[]>('/board')).data
-		return getBoards
+		return getBoards()
 	},
 
 	// при перемещении карточки внутри доски/между досками отправляет изменения на сервер
@@ -18,9 +18,9 @@ export const BoardService = {
 		return setBoardsBack(newBoard)
 	},
 
-	async deleteCard(id: string): Promise<IBoard[]> {
+	async deleteCard(id: number): Promise<IBoard[]> {
 		// return (await axiosInstance.delete<IBoard[]>('/card', { data: id })).data
-		return getBoards
+		return getBoards()
 	},
 
 	async addCard(data: ICreateCard): Promise<IBoard[]> {

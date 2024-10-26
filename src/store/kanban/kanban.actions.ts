@@ -31,7 +31,7 @@ export const setBoards = createAsyncThunk<IBoard[], IBoard[]>(
 )
 
 /* deleteCard */
-export const deleteCard = createAsyncThunk<IBoard[], string>(
+export const deleteCard = createAsyncThunk<IBoard[], number>(
 	'kanban/deleteCard',
 	async (idCard, thunkApi) => {
 		try {
