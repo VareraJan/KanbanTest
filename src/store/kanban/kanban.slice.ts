@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IInitialState } from './kanban.interface'
-import { getAll } from './kanban.actions'
+import { getAll, setBoards } from './kanban.actions'
 import { IBoard } from '../../shared/ui'
-import { RootState } from '../store'
 
 const initialState: IInitialState = {
 	boards: [],
@@ -14,9 +13,9 @@ export const kanbanSlice = createSlice({
 	name: 'kanban',
 	initialState,
 	reducers: {
-		setBoards: (state, action: PayloadAction<IBoard[]>) => {
-			state.boards = action.payload
-		},
+		// setBoards: (state, action: PayloadAction<IBoard[]>) => {
+		// 	state.boards = action.payload
+		// },
 	},
 	extraReducers: (builder) => {
 		builder
@@ -32,10 +31,22 @@ export const kanbanSlice = createSlice({
 				state.isLoading = false
 				state.isError = true
 			})
+			.addCase(setBoards.pending, (state) => {
+				state.isLoading = true
+				state.isError = false
+			})
+			.addCase(setBoards.fulfilled, (state, { payload }) => {
+				state.isLoading = false
+				state.boards = payload
+			})
+			.addCase(setBoards.rejected, (state) => {
+				state.isLoading = false
+				state.isError = true
+			})
 	},
 })
 
-export const { setBoards } = kanbanSlice.actions
+// export const { setBoards } = kanbanSlice.actions
 
 // export const selectBoards = (state: RootState) => state.kanban.boards
 

@@ -1,10 +1,16 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Grid } from '@consta/uikit/Grid'
 import { Board } from '../../shared/ui'
-import { useBoard, useDragNDropBoard } from '../../hook/'
+import { useAppSelector, useDragNDropBoard } from '../../hook/'
+import { useActions } from '../../hook/useActions'
 
 export const Kanban: FC = () => {
-	const { boards, setBoards, isError, isLoading } = useBoard()
+	const { isError, isLoading, boards } = useAppSelector((state) => state.kanban)
+	const { getAll } = useActions()
+
+	useEffect(() => {
+		getAll()
+	}, [])
 
 	const {
 		dragEndHandler,
@@ -12,7 +18,7 @@ export const Kanban: FC = () => {
 		dragOverHandler,
 		dragStartHandler,
 		dropHandler,
-	} = useDragNDropBoard({ boards, setBoards })
+	} = useDragNDropBoard()
 
 	// TODO разработать/уточнить механизм оповещения пользователя об ошибке
 	if (isError) return <div>Ошибка загрузки данных</div>

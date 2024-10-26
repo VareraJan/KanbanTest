@@ -1,12 +1,11 @@
 import { DragEvent, useCallback, useMemo, useState } from 'react'
 import { IBoard, ICard } from '../shared/ui'
+import { useActions } from './useActions'
+import { useAppSelector } from './useAppSelector'
 
-interface Props {
-	boards?: IBoard[]
-	setBoards: (boards: IBoard[]) => void
-}
-
-export const useDragNDropBoard = ({ boards, setBoards }: Props) => {
+export const useDragNDropBoard = () => {
+	const boards = useAppSelector((state) => state.kanban.boards)
+	const { setBoards } = useActions()
 	const [currentItem, setCurrentItem] = useState<ICard>()
 	const [currentBoard, setCurrentBoard] = useState<IBoard>()
 
@@ -31,36 +30,48 @@ export const useDragNDropBoard = ({ boards, setBoards }: Props) => {
 		(e: DragEvent<HTMLDivElement>, board: IBoard, item?: ICard) => {
 			e.preventDefault()
 			e.stopPropagation()
+			const dropB = JSON.parse(JSON.stringify(board))
+
+			const changeCurrentBoard = JSON.parse(
+				JSON.stringify(currentBoard)
+			) as IBoard
 
 			if (currentItem && currentBoard) {
-				const isChange =
-					board.id - currentBoard.id === 1 || board.id - currentBoard.id === 0
+				const isChange = dropB.id - currentBoard.id === 1
+				const isSort = dropB.id - currentBoard.id === 0
+
+				if (isSort && item) {
+					const currentIndex = currentBoard.items.indexOf(currentItem)
+					dropB.items.splice(currentIndex, 1)
+					const sortIndex = currentBoard.items.indexOf(item)
+					dropB.items.splice(sortIndex, 0, currentItem)
+				}
 
 				if (isChange) {
 					const currentIndex = currentBoard.items.indexOf(currentItem)
-					currentBoard.items.splice(currentIndex, 1)
 
-					if (!item) {
-						board.items.push(currentItem)
-					} else {
-						const dropIndex = board.items.indexOf(item)
-						board.items.splice(dropIndex, 0, currentItem)
-					}
+					changeCurrentBoard.items.splice(currentIndex, 1)
 
-					if (boards) {
-						setBoards(
-							boards.map((b) => {
-								if (b.id === board.id) {
-									return board
-								}
-								if (b.id === currentBoard.id) {
-									return currentBoard
-								}
+					const dropIndex = item
+						? board.items.indexOf(item)
+						: board.items.length
 
-								return b
-							})
-						)
-					}
+					dropB.items.splice(dropIndex, 0, currentItem)
+				}
+
+				if (boards) {
+					setBoards(
+						boards.map((b) => {
+							if (b.id === dropB.id) {
+								return dropB
+							}
+							if (b.id === changeCurrentBoard.id) {
+								return changeCurrentBoard
+							}
+
+							return b
+						})
+					)
 				}
 			}
 		},

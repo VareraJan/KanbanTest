@@ -1,3 +1,5 @@
+import { IBoard } from '../shared/ui'
+
 // get 'SERVER_API/board'
 export const getBoards = new Promise((res) => {
 	setTimeout(
@@ -38,11 +40,16 @@ export const getBoards = new Promise((res) => {
 					id: 4,
 					title: 'Выполнено',
 					items: [
-						{ id: 10, title: 'Task 8', text: 'loren ipsum' },
-						{ id: 11, title: 'Task 9', text: 'loren ipsum' },
+						{ id: 10, title: 'Task 10', text: 'loren ipsum' },
+						{ id: 11, title: 'Task 11', text: 'loren ipsum' },
 					],
 				},
 			]),
 		1500
 	)
 })
+
+export const setBoardsBack = (data: IBoard[]): Promise<IBoard[]> =>
+	new Promise((res) => {
+		setTimeout(() => res(data), 1000)
+	})

@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { IBoard } from '../shared/ui'
-import { BoardService } from '../services/board.service'
 import { useAppSelector } from './useAppSelector'
-import { setBoards } from '../store/kanban/kanban.slice'
+// import { setBoards } from '../store/kanban/kanban.slice'
 import { useActions } from './useActions'
 
 interface IUseBoardResponse {
@@ -14,7 +13,7 @@ interface IUseBoardResponse {
 
 export const useBoard = (): IUseBoardResponse => {
 	const { isError, isLoading, boards } = useAppSelector((state) => state.kanban)
-	const { getAll } = useActions()
+	const { getAll, setBoards } = useActions()
 
 	useEffect(() => {
 		getAll()
@@ -27,6 +26,6 @@ export const useBoard = (): IUseBoardResponse => {
 			isLoading,
 			isError,
 		}),
-		[boards, isError, isLoading]
+		[boards, isError, isLoading, setBoards]
 	)
 }
