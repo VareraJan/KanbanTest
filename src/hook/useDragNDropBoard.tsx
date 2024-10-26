@@ -61,19 +61,21 @@ export const useDragNDropBoard = () => {
 					dropB.items.splice(dropIndex, 0, currentItem)
 				}
 
-				if (boards) {
-					setBoards(
-						boards.map((b) => {
-							if (b.id === dropB.id) {
-								return dropB
-							}
-							if (b.id === changeCurrentBoard.id) {
-								return changeCurrentBoard
-							}
+				if (isChange || isSort) {
+					if (boards) {
+						setBoards(
+							boards.map((b) => {
+								if (b.id === dropB.id) {
+									return dropB
+								}
+								if (b.id === changeCurrentBoard.id) {
+									return changeCurrentBoard
+								}
 
-							return b
-						})
-					)
+								return b
+							})
+						)
+					}
 				}
 			}
 		},
