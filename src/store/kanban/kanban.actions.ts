@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IBoard } from '../../shared/ui'
-import { BoardService } from '../../services/board.service'
+import { BoardService, ICreateCard } from '../../services/board.service'
 
 /* getAll */
 export const getAll = createAsyncThunk<IBoard[]>(
@@ -25,6 +25,34 @@ export const setBoards = createAsyncThunk<IBoard[], IBoard[]>(
 			return response
 		} catch (error) {
 			console.log(`[BOARD_SET_BOARDS] error ${error}`)
+			return thunkApi.rejectWithValue(error)
+		}
+	}
+)
+
+/* deleteCard */
+export const deleteCard = createAsyncThunk<IBoard[], string>(
+	'kanban/deleteCard',
+	async (idCard, thunkApi) => {
+		try {
+			const response = await BoardService.deleteCard(idCard)
+			return response
+		} catch (error) {
+			console.log(`[DELETE_CARD] error ${error}`)
+			return thunkApi.rejectWithValue(error)
+		}
+	}
+)
+
+/* addCard */
+export const addCard = createAsyncThunk<IBoard[], ICreateCard>(
+	'kanban/addCard',
+	async (data, thunkApi) => {
+		try {
+			const response = await BoardService.addCard(data)
+			return response
+		} catch (error) {
+			console.log(`[DELETE_CARD] error ${error}`)
 			return thunkApi.rejectWithValue(error)
 		}
 	}
