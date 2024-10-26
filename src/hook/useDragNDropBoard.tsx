@@ -31,7 +31,6 @@ export const useDragNDropBoard = () => {
 			e.preventDefault()
 			e.stopPropagation()
 			const dropB = JSON.parse(JSON.stringify(board))
-
 			const changeCurrentBoard = JSON.parse(
 				JSON.stringify(currentBoard)
 			) as IBoard
@@ -40,10 +39,13 @@ export const useDragNDropBoard = () => {
 				const isChange = dropB.id - currentBoard.id === 1
 				const isSort = dropB.id - currentBoard.id === 0
 
-				if (isSort && item) {
+				if (isSort) {
 					const currentIndex = currentBoard.items.indexOf(currentItem)
 					dropB.items.splice(currentIndex, 1)
-					const sortIndex = currentBoard.items.indexOf(item)
+
+					const sortIndex = item
+						? currentBoard.items.indexOf(item)
+						: currentBoard.items.length
 					dropB.items.splice(sortIndex, 0, currentItem)
 				}
 
