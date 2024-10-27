@@ -53,7 +53,11 @@ export const CardItem: FC<Props> = ({
 					{item.text}
 				</Text>
 				<div className={styles.footer}>
-					<IconTrash view="brand" onClick={() => setIsModalOpen(true)} />
+					<IconTrash
+						view="brand"
+						onClick={() => setIsModalOpen(true)}
+						className={styles.icon}
+					/>
 				</div>
 			</Card>
 			<Modal

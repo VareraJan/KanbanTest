@@ -10,6 +10,10 @@ import { Button } from '@consta/uikit/Button'
 import { Modal } from '@consta/uikit/Modal'
 import { useActions } from '../../../hook/useActions'
 
+import { withTooltip } from '@consta/uikit/withTooltip'
+
+const IconWithTooltip = withTooltip({ content: 'Создать карточку' })(IconAdd)
+
 interface IError {
 	title: string | null
 	text: string | null
@@ -80,7 +84,7 @@ export const Board: FC<IBoardProps> = ({
 				<Text align="center" truncate key={board.id} className={styles.title}>
 					{board.title}
 					{board.id === 1 && (
-						<IconAdd
+						<IconWithTooltip
 							size="s"
 							view="link"
 							className={styles.icon}
