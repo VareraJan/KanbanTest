@@ -71,6 +71,8 @@ export const Board: FC<IBoardProps> = ({
 			return
 		}
 		addCard({ title, text })
+		setTitle(null)
+		setText(null)
 		setIsModalOpen(false)
 	}
 

@@ -8,6 +8,9 @@ import { FC, useState } from 'react'
 import { IBoardProps } from '../Board/Board'
 import styles from './CardItem.module.css'
 import { useActions } from '../../../hook/useActions'
+import { withTooltip } from '@consta/uikit/withTooltip'
+
+const TextWithTooltip = withTooltip()(Text)
 
 export interface ICard {
 	id: number
@@ -46,12 +49,25 @@ export const CardItem: FC<Props> = ({
 				onDragEnd={(e) => dragEndHandler(e)}
 				onDrop={(e) => dropHandler(e, board, item)}
 			>
-				<Text view="brand" size="l" align="center" truncate>
+				{/* TODO донастроить Tooltip по необходимости? */}
+				<TextWithTooltip
+					tooltipProps={{ content: item.title }}
+					view="brand"
+					size="l"
+					align="center"
+					truncate
+				>
 					{item.title}
-				</Text>
-				<Text as="p" className={styles.text}>
+				</TextWithTooltip>
+				{/* TODO обрезать текст если больше определенного количества строк и донастроить Tooltip по необходимости? */}
+				<TextWithTooltip
+					// tooltipProps={{ content: item.text }}
+					content={item.text}
+					as="p"
+					// className={styles.text}
+				>
 					{item.text}
-				</Text>
+				</TextWithTooltip>
 				<div className={styles.footer}>
 					<IconTrash
 						view="brand"
