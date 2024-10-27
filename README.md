@@ -70,4 +70,4 @@ KanbanTest/
 
 ## Примечание
 
-- Бэкенд у приложения отсутствует, запросы имитируют Mock фукнции (src/services/backendMock.ts)
+- Бэкенд у приложения отсутствует, запросы имитируют [Mock фукнции](/src/services/backendMock.ts)
