@@ -4,7 +4,7 @@ import { addCard, deleteCard, getAll, setBoards } from './kanban.actions'
 import { IBoard } from '../../shared/ui'
 
 const initialState: IInitialState = {
-	boards: [],
+	boards: undefined,
 	isError: false,
 	isLoading: false,
 }
