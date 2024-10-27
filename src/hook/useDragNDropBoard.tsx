@@ -39,6 +39,8 @@ export const useDragNDropBoard = () => {
 				const isChange = dropB.id - currentBoard.id === 1
 				const isSort = dropB.id - currentBoard.id === 0
 
+				if (currentItem.id === item?.id) return
+
 				if (isSort) {
 					const currentIndex = currentBoard.items.indexOf(currentItem)
 					dropB.items.splice(currentIndex, 1)

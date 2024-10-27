@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Kanban } from './screens/index.ts'
 import { Layout } from './shared/ui'

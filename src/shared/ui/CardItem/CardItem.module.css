@@ -1,6 +1,7 @@
 .card {
 	cursor: grab;
 	margin-top: 0.5rem;
+	min-width: 100px;
 }
 
 .text {
@@ -19,6 +20,8 @@
 
 .modal {
 	min-width: 400px;
+	width: 50vw;
+	max-width: 600px;
 	position: relative;
 	padding: 0 2rem;
 }

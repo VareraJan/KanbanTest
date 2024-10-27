@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, memo, ReactNode } from 'react'
 import { Loader } from '@consta/uikit/Loader'
 
 import styles from './LoadingOverlay.module.css'
@@ -8,7 +8,7 @@ interface Props {
 	children: ReactNode
 }
 
-export const LoadingOverlay: FC<Props> = ({ loading, children }) => {
+export const LoadingOverlay: FC<Props> = memo(({ loading, children }) => {
 	if (!loading) return children
 
 	return (
@@ -19,4 +19,4 @@ export const LoadingOverlay: FC<Props> = ({ loading, children }) => {
 			</div>
 		</>
 	)
-}
+})

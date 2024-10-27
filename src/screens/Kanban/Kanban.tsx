@@ -1,10 +1,10 @@
-import { FC, useEffect } from 'react'
+import { FC, memo, useEffect } from 'react'
 import { Grid } from '@consta/uikit/Grid'
-import { Board, LoadingOverlay } from '../../shared/ui'
+import { BoardColumn, LoadingOverlay } from '../../shared/ui'
 import { useAppSelector, useDragNDropBoard } from '../../hook/'
 import { useActions } from '../../hook/useActions'
 
-export const Kanban: FC = () => {
+export const Kanban: FC = memo(() => {
 	const { isError, isLoading, boards } = useAppSelector((state) => state.kanban)
 	const { getAll } = useActions()
 
@@ -28,7 +28,7 @@ export const Kanban: FC = () => {
 			<Grid gap={'s'} cols={4} style={{ height: '100%' }}>
 				{boards &&
 					boards.map((board) => (
-						<Board
+						<BoardColumn
 							key={board.id}
 							board={board}
 							dragEndHandler={dragEndHandler}
@@ -41,4 +41,4 @@ export const Kanban: FC = () => {
 			</Grid>
 		</LoadingOverlay>
 	)
-}
+})

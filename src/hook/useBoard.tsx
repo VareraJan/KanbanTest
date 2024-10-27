@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { IBoard } from '../shared/ui'
 import { useAppSelector } from './useAppSelector'
-// import { setBoards } from '../store/kanban/kanban.slice'
 import { useActions } from './useActions'
 
 interface IUseBoardResponse {
