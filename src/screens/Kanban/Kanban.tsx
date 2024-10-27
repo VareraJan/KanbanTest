@@ -10,7 +10,7 @@ export const Kanban: FC = memo(() => {
 
 	useEffect(() => {
 		getAll()
-	}, [])
+	}, [getAll])
 
 	const {
 		dragEndHandler,

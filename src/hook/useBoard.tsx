@@ -16,7 +16,7 @@ export const useBoard = (): IUseBoardResponse => {
 
 	useEffect(() => {
 		getAll()
-	}, [])
+	}, [getAll])
 
 	return useMemo(
 		() => ({
