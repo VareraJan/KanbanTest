@@ -48,6 +48,8 @@ export const deleteCard = createAsyncThunk<IBoard[], number>(
 export const addCard = createAsyncThunk<IBoard[], ICreateCard>(
 	'kanban/addCard',
 	async (data, thunkApi) => {
+		console.log('ACTIONS')
+
 		try {
 			const response = await BoardService.addCard(data)
 			return response

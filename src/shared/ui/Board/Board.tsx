@@ -8,6 +8,12 @@ import { TextField } from '@consta/uikit/TextField'
 import styles from './Board.module.css'
 import { Button } from '@consta/uikit/Button'
 import { Modal } from '@consta/uikit/Modal'
+import { useActions } from '../../../hook/useActions'
+
+interface IError {
+	title: string | null
+	text: string | null
+}
 
 export interface IBoard {
 	id: number
@@ -45,6 +51,24 @@ export const Board: FC<IBoardProps> = ({
 	const [text, setText] = useState<string | null>(null)
 	const titleHandler = (value: string | null) => setTitle(value)
 	const textHandler = (value: string | null) => setText(value)
+
+	const [error, setError] = useState<IError>({ text: null, title: null })
+
+	const { addCard } = useActions()
+
+	const submitHandler = () => {
+		if (!title || !text) {
+			setError({
+				text: text ? null : 'Поле не может быть пустым',
+				title: title ? null : 'Поле не может быть пустым',
+			})
+
+			setTimeout(() => setError({ text: null, title: null }), 3000)
+			return
+		}
+		addCard({ title, text })
+		setIsModalOpen(false)
+	}
 
 	return (
 		<>
@@ -95,6 +119,11 @@ export const Board: FC<IBoardProps> = ({
 						placeholder="Название карточки"
 						label="Заголовок:"
 						withClearButton
+						required
+						autoFocus
+						{...(error.title
+							? { caption: `${error.title}`, status: 'warning' }
+							: null)}
 					/>
 					<TextField
 						onChange={textHandler}
@@ -104,6 +133,10 @@ export const Board: FC<IBoardProps> = ({
 						placeholder="текст карточки"
 						label="Содержание:"
 						withClearButton
+						required
+						{...(error.text
+							? { caption: `${error.text}`, status: 'warning' }
+							: null)}
 					/>
 				</div>
 				<div className={styles.modalBtn}>
@@ -112,7 +145,7 @@ export const Board: FC<IBoardProps> = ({
 						view="primary"
 						label="Создать карточку"
 						width="default"
-						onClick={() => setIsModalOpen(false)}
+						onClick={() => submitHandler()}
 					/>
 					<Button
 						size="m"

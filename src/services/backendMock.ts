@@ -57,7 +57,9 @@ export const addCardBack = (data: ICreateCard): Promise<IBoard[]> =>
 	new Promise((res) => {
 		setTimeout(() => {
 			const id = Math.round(Math.random() * 1000)
-			boards[0].items.push({ id, ...data })
-			res(boards)
+			const newBoard = JSON.parse(JSON.stringify(boards))
+
+			newBoard[0].items.push({ id, ...data })
+			res(newBoard)
 		}, 1000)
 	})
