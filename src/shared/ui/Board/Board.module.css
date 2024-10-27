@@ -1,3 +1,30 @@
 .title {
 	margin-bottom: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	margin-left: 0.5rem;
+	cursor: pointer;
+}
+
+.modal {
+	min-width: 400px;
+	padding: 0 2rem;
+}
+
+.fieldContainer {
+	min-height: 13rem;
+}
+
+.fieldContainer > div:last-child {
+	margin-top: 1rem;
+}
+
+.modalBtn {
+	display: flex;
+	justify-content: space-between;
+	margin: 2rem 0;
 }
