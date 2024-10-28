@@ -73,3 +73,4 @@ KanbanTest/
 ## Примечание
 
 - Бэкенд у приложения отсутствует, запросы имитируют [Mock фукнции](/src/services/backendMock.ts)
+- Тестовое задание в файле Testovoe.docx
