@@ -1,6 +1,6 @@
 import { FC, memo, useEffect } from 'react'
 import { Grid } from '@consta/uikit/Grid'
-import { BoardColumn, LoadingOverlay } from '../../shared/ui'
+import { BoardColumn, LoadingOverlay, Toast } from '../../shared/ui'
 import { useAppSelector, useDragNDropBoard } from '../../hook/'
 import { useActions } from '../../hook/useActions'
 
@@ -20,11 +20,16 @@ export const Kanban: FC = memo(() => {
 		dropHandler,
 	} = useDragNDropBoard()
 
-	// TODO разработать/уточнить механизм оповещения пользователя об ошибке
-	if (isError) return <div>Ошибка загрузки данных</div>
-
 	return (
 		<LoadingOverlay loading={isLoading}>
+			{isError && (
+				<Toast
+					closeTimer={4}
+					status="alert"
+					title="Произошла ошибка"
+					label="Что-то пошло не так, попробуйте позже"
+				/>
+			)}
 			<Grid gap={'s'} cols={4} style={{ height: '100%' }}>
 				{boards &&
 					boards.map((board) => (

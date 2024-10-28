@@ -24,7 +24,7 @@ export const BoardService = {
 	},
 
 	async addCard(data: ICreateCard): Promise<IBoard[]> {
-		// return (await axiosInstance.post<IBoard[]>('/card', {data})).data
+		// return (await axiosInstance.post<IBoard[]>('/card', { data })).data
 		return addCardBack(data)
 	},
 }
